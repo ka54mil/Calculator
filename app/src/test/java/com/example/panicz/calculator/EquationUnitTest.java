@@ -3,12 +3,8 @@ package com.example.panicz.calculator;
 import com.example.panicz.calculator.Controllers.Equation;
 
 import junit.framework.Assert;
+
 import org.junit.Test;
-
-
-/**
- * Created by Panicz on 10-Jun-17.
- */
 
 public class EquationUnitTest {
     @Test
@@ -38,6 +34,5 @@ public class EquationUnitTest {
 
         equation.setEquation("22^32)*3/4^3+(12)+(-(10))+(-2)");
         Assert.assertEquals("22 32 ^ 3 * 4 3 ^ / 12 + 0 10 - + -2 +", equation.toString());
-
     }
 }

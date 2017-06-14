@@ -8,19 +8,19 @@ import java.util.LinkedList;
 public class RPNGenerator {
     private Deque<String> rpn;
     private Deque<String> functions;
-    StringBuilder number;
-    String equation;
+    private StringBuilder number;
+    private String equation;
 
     public RPNGenerator(){
-        functions = new LinkedList<String>();
-        rpn=new LinkedList<String>();
+        functions = new LinkedList<>();
+        rpn = new LinkedList<>();
         number = new StringBuilder();
-        equation = new String();
+        equation = "";
     }
 
     public Deque<String> parseToRPN(String equation) throws Exception{
-        functions = new LinkedList<String>();
-        rpn=new LinkedList<String>();
+        functions.clear();
+        rpn.clear();
         number = new StringBuilder();
         this.equation = equation;
         char character;
@@ -113,7 +113,7 @@ public class RPNGenerator {
         }
     }
 
-    public void refactorEquation() throws IncorrectEquationFormatException {
+    private void refactorEquation() throws IncorrectEquationFormatException {
         int lbtc=0;
         char character;
         refactorFunctionsInEquation();
@@ -152,12 +152,12 @@ public class RPNGenerator {
         if(index == 0){
             this.equation = this.equation.substring(1);
         } else {
-            this.equation = new String(this.equation.substring(0, index) + this.equation.substring(index+1));
+            this.equation = this.equation.substring(0, index) + this.equation.substring(index + 1);
         }
     }
 
     private void appendCharacterToEquation(char character){
-        this.equation = new String(this.equation+character);
+        this.equation = this.equation + character;
     }
 
     private void deleteAllWhiteSpaces(){
