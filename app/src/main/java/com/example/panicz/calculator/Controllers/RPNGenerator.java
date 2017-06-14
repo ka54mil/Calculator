@@ -1,4 +1,6 @@
-package com.example.panicz.calculator;
+package com.example.panicz.calculator.Controllers;
+
+import com.example.panicz.calculator.Exceptions.IncorrectEquationFormatException;
 
 import java.util.Deque;
 import java.util.LinkedList;

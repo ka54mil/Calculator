@@ -1,5 +1,7 @@
 package com.example.panicz.calculator;
 
+import com.example.panicz.calculator.Controllers.Equation;
+
 import junit.framework.Assert;
 import org.junit.Test;
 
