@@ -3,7 +3,8 @@ package com.example.panicz.calculator;
 import com.example.panicz.calculator.Controllers.RPNGenerator;
 import com.example.panicz.calculator.Exceptions.IncorrectEquationFormatException;
 
-import junit.framework.*;
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import java.util.Deque;
@@ -183,6 +184,13 @@ public class RPNGeneratorUnitTest {
 
         try{
             test.parseToRPN("(2+3+)");
+            Assert.fail();
+        } catch(IncorrectEquationFormatException iefe){
+
+        }
+
+        try{
+            test.parseToRPN("2-+3-");
             Assert.fail();
         } catch(IncorrectEquationFormatException iefe){
 
