@@ -1,5 +1,7 @@
 package com.example.panicz.calculator.Controllers;
 
+import com.example.panicz.calculator.Exceptions.IncorrectEquationFormatException;
+
 import java.math.BigDecimal;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -7,6 +9,7 @@ import java.util.LinkedList;
 public class Calculator {
     private Deque<String> numbers;
     private Equation equation;
+    private static Calculations calculations;
 
     public Calculator()
     {
@@ -29,70 +32,39 @@ public class Calculator {
         this.equation=new Equation(equation);
     }
 
-    public BigDecimal calculate(String equation)
-    {
+    public String calculate(String equation) throws IncorrectEquationFormatException {
         numbers.clear();
         setEquation(equation);
 
-        String first,second;
-        for(int i=0; i<equation.length(); i++)
-        {
-            char z=equation.charAt(i);
-
-//			switch(co(i))
-//			{
-//				case 0:
-//				{
-//					String liczby="";
-//					while(z!=' ')
-//					{
-//						z=equation.charAt(i);
-//						if(z!=' ')
-//						{
-//							liczby=liczby+z;
-//							i++;
-//						}
-//
-//					}
-//					numbers.push(liczby);
-//					break;
-//				}
-//
-//
-//				case 1:
-//				{
-//					first=numbers.pop();
-//					second=numbers.pop();
-//					numbers.push(second+first);
-//					break;
-//				}
-//
-//				case 2:
-//				{
-//					first=numbers.pop();
-//					second=numbers.pop();
-//					numbers.push(second-first);
-//					break;
-//				}
-//				case 3:
-//				{
-//					first=numbers.pop();
-//					second=numbers.pop();
-//					numbers.push(second*first);
-//					break;
-//				}
-//
-//				case 4:
-//				{
-//					first=numbers.pop();
-//					second=numbers.pop();
-//					numbers.push(secondfirst);
-//					break;
-//				}
-//			}
+        while(!this.equation.isEmpty()){
+            which(this.equation.getElement());
         }
 
-        return new BigDecimal(numbers.pop());
+        if(numbers.isEmpty()){
+            throw new IncorrectEquationFormatException("There is missing argument in your equation");
+        }
+
+        StringBuilder result = new StringBuilder(numbers.pop());
+        while(!numbers.isEmpty()){
+            result.append(numbers.pop());
+        }
+
+        return result.toString();
     }
 
+    private void which(String z){
+
+        switch (z){
+            case "+":
+                numbers.add(
+                        calculations.add(
+                                new BigDecimal(numbers.pop()),
+                                new BigDecimal(numbers.pop())
+                        ).toString()
+                );
+                break;
+            default:
+                numbers.add(z);//a co robic gdy mamy np. 3+a albo 2*a? i nie znamy wartosci a?
+        }
+    }
 }

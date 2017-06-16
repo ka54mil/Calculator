@@ -25,14 +25,6 @@ public class Equation {
         this.equation = new LinkedList<>();
     }
 
-    public String toString(){
-        StringBuilder equation = new StringBuilder();
-        while(!this.equation.isEmpty()) {
-            equation.append(this.equation.pop()).append(" ");
-        }
-        return equation.deleteCharAt(equation.lastIndexOf(" ")).toString();
-    }
-
     public void setEquation(String equation){
         try {
             this.equation = generator.parseToRPN(equation);
@@ -44,4 +36,24 @@ public class Equation {
             this.equation.clear();
         }
     }
+
+    public String getElement(){
+        if(isEmpty()){
+            throw new NullPointerException("The equation is empty");
+        }
+        return equation.pop();
+    }
+
+    public boolean isEmpty(){
+        return equation.isEmpty();
+    }
+
+    public String toString(){
+        StringBuilder equation = new StringBuilder();
+        while(!this.equation.isEmpty()) {
+            equation.append(this.equation.pop()).append(" ");
+        }
+        return equation.deleteCharAt(equation.lastIndexOf(" ")).toString();
+    }
+
 }
