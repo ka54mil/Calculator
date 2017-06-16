@@ -20,7 +20,7 @@ public class Calculations {
         if(second.equals(0)) {
             throw new ArithmeticException("Dividing by 0");
         }
-        return first.divide(second);
+        return first.divide(second, 100,BigDecimal.ROUND_HALF_UP);
     }
 
     public BigDecimal pow(BigDecimal first, int second){
