@@ -16,7 +16,10 @@ public class CalculationsUnitTest {
     private BigDecimal minusCztery = new BigDecimal("-4");
     private BigDecimal minusZero00000000000000000001 = new BigDecimal("-0.00000000000000000001");
     private BigDecimal zero = new BigDecimal("0");
+    private BigDecimal zero21474836595 = new BigDecimal("0.2147483595");
     private BigDecimal zero00000000000000000001 = new BigDecimal("0.00000000000000000001");
+    private BigDecimal zero01 = new BigDecimal("0.01");
+    private BigDecimal zero5 = new BigDecimal("0.5");
     private BigDecimal jeden = new BigDecimal("1");
     private BigDecimal dwa = new BigDecimal("2");
     private BigDecimal dwa34 = new BigDecimal("2.34");
@@ -44,6 +47,7 @@ public class CalculationsUnitTest {
 
     @Test
     public void rootTest(){
+        System.out.println(test.pow(cztery, zero21474836595).toString());
         Assert.assertEquals(osiem, test.root(szescCztery, 2).stripTrailingZeros());
         Assert.assertEquals(cztery, test.root(szescCztery, 3).stripTrailingZeros());
         Assert.assertEquals(minusCztery, test.root(minusSzescCztery, 3).stripTrailingZeros());
