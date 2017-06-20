@@ -7,6 +7,18 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class Calculations {
+    private int roundingMode;
+    private int precision;
+
+    public Calculations(){
+        roundingMode = BigDecimal.ROUND_HALF_UP;
+        precision = 500;
+    }
+
+    public Calculations(int roundingMode, int precision){
+        this.roundingMode = roundingMode;
+        this.precision = precision;
+    }
 
     public BigDecimal add(BigDecimal first, BigDecimal second) {
         return first.add(second);
@@ -24,7 +36,7 @@ public class Calculations {
         if (second.equals(new BigDecimal(0))) {
             throw new ArithmeticException("Dividing by 0");
         }
-        return first.divide(second, 550, BigDecimal.ROUND_HALF_UP).setScale(500,BigDecimal.ROUND_HALF_UP);
+        return first.divide(second, precision+50, roundingMode).setScale(precision,roundingMode);
     }
 
     public BigDecimal pow(BigDecimal first, BigDecimal n){
@@ -46,21 +58,44 @@ public class Calculations {
     }
 
     private BigDecimal pow(BigDecimal first, BigDecimal n, ICalculations method) {
-        BigDecimal maxIntVal = new BigDecimal(999999);
-        BigDecimal result = new BigDecimal(1).setScale(550,BigDecimal.ROUND_HALF_UP);
+        BigDecimal maxIntVal = new BigDecimal(999);
+        BigDecimal powerOfTen = BigDecimal.ZERO;
+        while(n.remainder(BigDecimal.TEN).compareTo(BigDecimal.ZERO)==0){
+            n=divide(n,BigDecimal.TEN);
+            powerOfTen = add(powerOfTen,BigDecimal.ONE);
+        }
+        System.out.println(powerOfTen);
+        BigDecimal result = new BigDecimal(1).setScale(precision+50,roundingMode);
         if(n.compareTo(maxIntVal)==1){
             BigDecimal powResult = method.pow(first, maxIntVal.intValue());
+            BigDecimal maxIntValSquare = pow(maxIntVal,2);
+            if(n.compareTo(maxIntValSquare)==1){
+                BigDecimal powResultSquare = pow(pow(first,2),maxIntVal.intValue());
+                while(n.compareTo(maxIntValSquare)==1){
+                    result = multiply(powResultSquare,result);
+                    n = subtract(n,maxIntValSquare);
+                }
+            }
             while (n.compareTo(maxIntVal)==1){
                 result = multiply(powResult,result);
                 n = subtract(n,maxIntVal);
             }
         }
-        result =  multiply(method.pow(first , n.intValue()), result);
+        result = multiply(method.pow(first , n.intValue()), result);
+        BigDecimal maxTenPower = new BigDecimal(7);
+        while(powerOfTen.compareTo(maxTenPower)==1){
+            result = method.pow(result,pow(BigDecimal.TEN,maxTenPower.intValue()).intValue());
+            powerOfTen = divide(powerOfTen,maxTenPower);
+        }
+        result = method.pow(result,pow(BigDecimal.TEN,powerOfTen.intValue()).intValue());
         return result;
     }
 
     public BigDecimal pow(BigDecimal first, int n) {
-        return first.pow(n, new MathContext(500, RoundingMode.HALF_UP));
+        if(n>999999999){
+            return multiply(pow(first,subtract(new BigDecimal(n),new BigDecimal(999999999)).intValue()), pow(first,new BigDecimal(999999999).intValue()));
+        }
+        return first.pow(n, new MathContext(precision, RoundingMode.HALF_UP));
     }
 
     public String rootI(String first, int n){// do zwracania wartosci z i
@@ -69,10 +104,10 @@ public class Calculations {
 
     public BigDecimal root(BigDecimal first, int n) {
 
-        first = first.setScale(500,BigDecimal.ROUND_HALF_UP);
+        first = first.setScale(precision,roundingMode);
         BigDecimal addition = divide(first, BigDecimal.TEN);
         BigDecimal result = addition;
-        BigDecimal prevResult = first;
+        BigDecimal prevResult;
         BigDecimal resultPow = pow(result, n);
         int compare;
         int repeating = 0;
