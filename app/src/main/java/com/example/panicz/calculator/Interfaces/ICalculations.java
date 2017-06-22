@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 
 
 public interface ICalculations {
-    BigDecimal pow(BigDecimal x, int xN);
+    BigDecimal calculate(BigDecimal first, int second);
 }

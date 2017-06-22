@@ -1,6 +1,6 @@
 package com.example.panicz.calculator;
 
-import com.example.panicz.calculator.Controllers.Calculations;
+import com.example.panicz.calculator.Controllers.Calculations.Calculations;
 
 import org.junit.Assert;
 import org.junit.Test;
