@@ -1,4 +1,4 @@
-package com.example.panicz.calculator.Controllers.Calculations;
+package com.example.panicz.calculator.Math;
 
 import java.math.BigDecimal;
 

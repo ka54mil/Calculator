@@ -1,19 +1,24 @@
-package com.example.panicz.calculator.Controllers.Calculations;
+package com.example.panicz.calculator.Controllers;
+
+import com.example.panicz.calculator.Math.Addition;
+import com.example.panicz.calculator.Math.Division;
+import com.example.panicz.calculator.Math.Multiplication;
+import com.example.panicz.calculator.Math.Subtraction;
 
 import java.math.BigDecimal;
 
 public class SimpleCalculations {
     protected int roundingMode;
-    protected int precision;
+    protected int scale;
 
-    public SimpleCalculations(){
+    public SimpleCalculations() {
+        scale = 500;
         roundingMode = BigDecimal.ROUND_HALF_UP;
-        precision = 500;
     }
 
-    public SimpleCalculations(int roundingMode, int precision){
+    public SimpleCalculations(int roundingMode, int scale) {
         this.roundingMode = roundingMode;
-        this.precision = precision;
+        this.scale = scale;
     }
 
     public BigDecimal add(BigDecimal first, BigDecimal second) {
@@ -25,12 +30,10 @@ public class SimpleCalculations {
     }
 
     public BigDecimal multiply(BigDecimal first, BigDecimal second) {
-        return Multiplication.multiply(first, second);
+        return Multiplication.multiply(first, second, this.scale, this.roundingMode);
     }
 
     public BigDecimal divide(BigDecimal dividend, BigDecimal divisor) throws ArithmeticException {
-        dividend = dividend.setScale(precision+50,roundingMode);
-        divisor = divisor.setScale(precision+50,roundingMode);
-        return Division.divide(dividend, divisor).setScale(precision,roundingMode);
+        return Division.divide(dividend, divisor, this.scale, this.roundingMode);
     }
 }

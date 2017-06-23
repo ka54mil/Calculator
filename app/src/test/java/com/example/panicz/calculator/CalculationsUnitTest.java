@@ -1,6 +1,7 @@
 package com.example.panicz.calculator;
 
-import com.example.panicz.calculator.Controllers.Calculations.Calculations;
+import com.example.panicz.calculator.Controllers.Calculations;
+import com.example.panicz.calculator.Math.PrimeNumber;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,6 +15,7 @@ public class CalculationsUnitTest {
     private BigDecimal minusJedenDwaTrzyZeroZeroZeroZeroZeroZeroZeroPiecZeroZeroZeroOsiemZeroZeroZeroZeroDziewiecZeroZeroZeroZero = new BigDecimal("-123000000050008000090000");
     private BigDecimal minusSzescCztery = new BigDecimal("-64");
     private BigDecimal minusCztery = new BigDecimal("-4");
+    private BigDecimal minusDwa = new BigDecimal("-2");
     private BigDecimal minusZero00000000000000000001 = new BigDecimal("-0.00000000000000000001");
     private BigDecimal zero = new BigDecimal("0");
     private BigDecimal zero21474836595 = new BigDecimal("2147483595");
@@ -25,6 +27,8 @@ public class CalculationsUnitTest {
     private BigDecimal dwa34 = new BigDecimal("2.34");
     private BigDecimal trzy = new BigDecimal("3");
     private BigDecimal cztery = new BigDecimal("4");
+    private BigDecimal piec = new BigDecimal("5");
+    private BigDecimal jedenJeden = new BigDecimal("11");
     private BigDecimal osiem = new BigDecimal("8");
     private BigDecimal jedenZero = new BigDecimal("10");
     private BigDecimal jedenSzesc = new BigDecimal("16");
@@ -32,9 +36,15 @@ public class CalculationsUnitTest {
     private BigDecimal dwaTrzy4 = new BigDecimal("23.4");
     private BigDecimal trzyDwa = new BigDecimal("32");
     private BigDecimal szescCztery = new BigDecimal("64");
+    private BigDecimal siedemJeden = new BigDecimal("71");
+    private BigDecimal dziewiecSiedem = new BigDecimal("97");
+    private BigDecimal dziewiecDziewiec = new BigDecimal("99");
+    private BigDecimal dziewiecCzteryZeroDziewiec = new BigDecimal(9409);
+    private BigDecimal dziewiecSzescZeroTrzy = new BigDecimal(9603);
     private BigDecimal jedenSzescDziewiecSiedemSiedemPiecCzteryZeroOsiemSzescTrzyDwaJedenCzteryDiewiecPiecTrzyOsiemOsiemDziewiecJeden = new BigDecimal("169775408632149538891");
     private BigDecimal jedenPiecCzteryOsiemDwaJedenDziewiecSzescSiedemSzescDziewiecTrzyTrzyZeroDziwecCzteryPiecZeroZeroJedenOsiemSiedemJeden = new BigDecimal("15482196769330945001871");
     private BigDecimal jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescDwa = new BigDecimal("15651972177963094540762");
+    private BigDecimal jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescjeden = new BigDecimal("15651972177963094540783").setScale(500,BigDecimal.ROUND_HALF_UP);
 
     @Test
     public void addTest(){
@@ -62,5 +72,57 @@ public class CalculationsUnitTest {
         Assert.assertEquals(cztery, test.gCD(szescCztery, minusCztery).stripTrailingZeros());
         Assert.assertEquals(dwa, test.gCD(minusSzescCztery, dwa).stripTrailingZeros());
         Assert.assertEquals(cztery, test.gCD(cztery, minusCztery).stripTrailingZeros());
+    }
+
+    @Test
+    public void getLowestPrimeNumberTest(){
+        try{
+            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(osiem).stripTrailingZeros());
+//            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(minusCztery).stripTrailingZeros());
+//            Assert.assertEquals(trzy, PrimeNumber.getLowestPrimeNumber(trzy).stripTrailingZeros());
+//            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(minusDwa).stripTrailingZeros());
+//            Assert.assertEquals(dziewiecSiedem, PrimeNumber.getLowestPrimeNumber(dziewiecSiedem).stripTrailingZeros());
+//            Assert.assertEquals(dziewiecSiedem, PrimeNumber.getLowestPrimeNumber(dziewiecCzteryZeroDziewiec).stripTrailingZeros());
+//            Assert.assertEquals(trzy, PrimeNumber.getLowestPrimeNumber(dziewiecSzescZeroTrzy).stripTrailingZeros());
+//            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(minusJedenTrzyPiecSiedemPiecSzescSiedemOsiemDziewiecZeroPiecDZiewiecZeroZeroOsiemDziewiecPiecJedenJedenDziewiecZeroZeroOsiemSzesc).stripTrailingZeros());
+//            Assert.assertEquals(siedemJeden, PrimeNumber.getLowestPrimeNumber(jedenSzescDziewiecSiedemSiedemPiecCzteryZeroOsiemSzescTrzyDwaJedenCzteryDiewiecPiecTrzyOsiemOsiemDziewiecJeden).stripTrailingZeros());
+//            Assert.assertEquals(jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescjeden, PrimeNumber.getLowestPrimeNumber(jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescjeden).stripTrailingZeros());
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void getLowestPrimeNumberExceptionTest(){
+        try{
+            PrimeNumber.getLowestPrimeNumber(zero);
+            Assert.fail();
+        } catch (Exception e){
+
+        }
+
+        try{
+            PrimeNumber.getLowestPrimeNumber(zero);
+            Assert.fail();
+        } catch (Exception e){
+
+        }
+
+        try{
+            PrimeNumber.getLowestPrimeNumber(zero);
+            Assert.fail();
+        } catch (Exception e){
+
+        }
+
+        try{
+            PrimeNumber.getLowestPrimeNumber(zero);
+            Assert.fail();
+        } catch (Exception e){
+
+        }
+
     }
 }
