@@ -53,8 +53,6 @@ public final class PrimeNumber {
             throw new NotAPrimeNumberException("Given number is 0, 1 or is not an integer");
         }
 
-        BigDecimal sqrt = Roots.root(number,2);
-        System.out.println("sqrt"+sqrt);
         BigDecimal result = new BigDecimal(2);
         BigDecimal two = result;
         if (Division.canBeDividedBy(number, two)){
@@ -62,8 +60,14 @@ public final class PrimeNumber {
         }
         result = Addition.increment(result);
 
+        BigDecimal sqrt = number.compareTo(new BigDecimal(9999999))==1?Roots.root(number.abs(),2):number;
+
         while(!Division.canBeDividedBy(number,result) && sqrt.compareTo(result)==1){
             result = Addition.add(result, two);
+//            System.out.println(result);
+        }
+        if(!Division.canBeDividedBy(number,result)){
+            result = number;
         }
         return result;
     }

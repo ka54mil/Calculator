@@ -15,6 +15,10 @@ public final class Division {
         return dividend.divide(divisor, scale+50, roundingMode).setScale(scale, roundingMode);
     }
 
+    public static BigDecimal divide(BigDecimal dividend, BigDecimal divisor, int scale){
+        return divide(dividend, divisor, scale, BigDecimal.ROUND_HALF_UP);
+    }
+
     public static boolean isEven(BigDecimal number){
         return canBeDividedBy(number, new BigDecimal(2));
     }

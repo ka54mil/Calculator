@@ -9,21 +9,18 @@ public class Roots {
     }
 
     public static BigDecimal root(BigDecimal number, int n, int scale, int roundingMode) {
-
         int precision = scale+5;
-        BigDecimal addition = Division.divide(number, BigDecimal.TEN, precision, roundingMode);
+        int signum = number.signum();
+        int compare;
+        int repeating = 0;
+        BigDecimal addition = BigDecimal.ONE;
+        if(signum == -1){
+            addition = addition.negate();
+        }
         BigDecimal result = addition;
         BigDecimal prevResult;
         BigDecimal resultPow = Exponentiation.pow(result, n, precision, roundingMode);
-        int compare;
-        int repeating = 0;
-        int signum = number.signum();
-        BigDecimal x = new BigDecimal("9999");
-        BigDecimal index = BigDecimal.ONE;
         while((compare = number.compareTo(resultPow)) !=0 && repeating < 10){
-            index = Addition.increment(index);
-            if(Division.canBeDividedBy(index,x ))
-            System.out.println(result);
             prevResult = result;
             if(compare!=signum){
                 result = Subtraction.subtract(result, addition);
