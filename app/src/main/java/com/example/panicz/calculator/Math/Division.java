@@ -1,6 +1,7 @@
 package com.example.panicz.calculator.Math;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public final class Division {
 
@@ -8,11 +9,25 @@ public final class Division {
         super();
     }
 
+
+    public static BigInteger divide(BigInteger dividend, BigInteger divisor){
+        if (divisor.equals(new BigDecimal(0))) {
+            throw new ArithmeticException("Dividing by 0");
+        }
+        return dividend.divide(divisor);
+    }
+
     public static BigDecimal divide(BigDecimal dividend, BigDecimal divisor, int scale, int roundingMode){
         if (divisor.equals(new BigDecimal(0))) {
             throw new ArithmeticException("Dividing by 0");
         }
-        return dividend.divide(divisor, scale+50, roundingMode).setScale(scale, roundingMode);
+        int precised = scale;
+        if(Integer.MAX_VALUE-5<scale){
+            precised = Integer.MAX_VALUE;
+        } else {
+            precised += 50;
+        }
+        return dividend.divide(divisor, precised, roundingMode).setScale(scale, roundingMode);
     }
 
     public static BigDecimal divide(BigDecimal dividend, BigDecimal divisor, int scale){

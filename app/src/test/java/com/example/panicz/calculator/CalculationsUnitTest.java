@@ -1,6 +1,7 @@
 package com.example.panicz.calculator;
 
-import com.example.panicz.calculator.Controllers.Calculations;
+import com.example.panicz.calculator.Math.Calculations;
+import com.example.panicz.calculator.Math.Constants;
 import com.example.panicz.calculator.Math.Factorial;
 import com.example.panicz.calculator.Math.PrimeNumber;
 
@@ -11,86 +12,87 @@ import java.math.BigDecimal;
 
 public class CalculationsUnitTest {
     private Calculations test = new Calculations();
-    private BigDecimal minusJedenTrzyPiecSiedemPiecSzescSiedemOsiemDziewiecZeroPiecDZiewiecZeroZeroOsiemDziewiecPiecJedenJedenDziewiecZeroZeroOsiemSzesc = new BigDecimal("-246456789104008951190086");
-    private BigDecimal minusJedenDwaTrzyCzteryPiecSzescSiedemOsiemDziewiecZeroPiecCzteryZeroZeroZeroDziewiecPiecJedenJedenZeroZeroZeroJedenOsiemSzesc = new BigDecimal("-123456789054000951100086");
-    private BigDecimal minusJedenDwaTrzyZeroZeroZeroZeroZeroZeroZeroPiecZeroZeroZeroOsiemZeroZeroZeroZeroDziewiecZeroZeroZeroZero = new BigDecimal("-123000000050008000090000");
-    private BigDecimal minusSzescCztery = new BigDecimal(-64);
-    private BigDecimal minusCztery = new BigDecimal(-4);
-    private BigDecimal minusDwa = new BigDecimal(-2);
+    private BigDecimal minusOneThreeFiveSevenFiveSixSevenEightNineZeroFiveDZiewiecZeroZeroEightNineFiveOneOneNineZeroZeroEightSix = new BigDecimal("-246456789104008951190086");
+    private BigDecimal minusOneTwoThreeFourFiveSixSevenEightNineZeroFiveFourZeroZeroZeroNineFiveOneOneZeroZeroZeroOneEightSix = new BigDecimal("-123456789054000951100086");
+    private BigDecimal minusOneTwoThreeZeroZeroZeroZeroZeroZeroZeroFiveZeroZeroZeroEightZeroZeroZeroZeroNineZeroZeroZeroZero = new BigDecimal("-123000000050008000090000");
+    private BigDecimal minusSixFour = new BigDecimal(-64);
+    private BigDecimal minusFour = new BigDecimal(-4);
+    private BigDecimal minusTwo = new BigDecimal(-2);
     private BigDecimal minusZero00000000000000000001 = new BigDecimal("-0.00000000000000000001");
     private BigDecimal zero = new BigDecimal(0);
     private BigDecimal zero00000000000000000001 = new BigDecimal("0.00000000000000000001");
-    private BigDecimal zero21474836595 = new BigDecimal(0.2147483595);
-    private BigDecimal zero01 = new BigDecimal(0.01);
-    private BigDecimal zero5 = new BigDecimal(0.5);
-    private BigDecimal jeden = new BigDecimal(1);
-    private BigDecimal dwa = new BigDecimal(2);
-    private BigDecimal dwa34 = new BigDecimal(2.34);
-    private BigDecimal trzy = new BigDecimal(3);
-    private BigDecimal cztery = new BigDecimal(4);
-    private BigDecimal piec = new BigDecimal(5);
-    private BigDecimal szesc = new BigDecimal(6);
-    private BigDecimal jedenJeden = new BigDecimal(11);
-    private BigDecimal osiem = new BigDecimal(8);
-    private BigDecimal jedenZero = new BigDecimal(10);
-    private BigDecimal jedenSzesc = new BigDecimal(16);
-    private BigDecimal dwaJeden06 = new BigDecimal(21.06);
-    private BigDecimal dwaTrzy4 = new BigDecimal(23.4);
-    private BigDecimal trzyDwa = new BigDecimal(32);
-    private BigDecimal szescCztery = new BigDecimal(64);
-    private BigDecimal siedemJeden = new BigDecimal(71);
-    private BigDecimal dziewiecSiedem = new BigDecimal(97);
-    private BigDecimal dziewiecDziewiec = new BigDecimal(99);
-    private BigDecimal siedemDwaZero = new BigDecimal(720);
-    private BigDecimal dziewiecCzteryZeroDziewiec = new BigDecimal(9409);
-    private BigDecimal dziewiecSzescZeroTrzy = new BigDecimal(9603);
-    private BigDecimal jedenSzescDziewiecSiedemSiedemPiecCzteryZeroOsiemSzescTrzyDwaJedenCzteryDiewiecPiecTrzyOsiemOsiemDziewiecJeden = new BigDecimal("169775408632149538891");
-    private BigDecimal jedenPiecCzteryOsiemDwaJedenDziewiecSzescSiedemSzescDziewiecTrzyTrzyZeroDziwecCzteryPiecZeroZeroJedenOsiemSiedemJeden = new BigDecimal("15482196769330945001871");
-    private BigDecimal jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescDwa = new BigDecimal("15651972177963094540762");
-    private BigDecimal jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescjeden = new BigDecimal("15651972177963094540783").setScale(500,BigDecimal.ROUND_HALF_UP);
+    private BigDecimal zero21474836595 = new BigDecimal("0.2147483595");
+    private BigDecimal zero01 = new BigDecimal("0.01");
+    private BigDecimal zero5 = new BigDecimal("0.5");
+    private BigDecimal one = new BigDecimal(1);
+    private BigDecimal two = new BigDecimal(2);
+    private BigDecimal two34 = new BigDecimal("2.34");
+    private BigDecimal two5 = new BigDecimal("2.5");
+    private BigDecimal three = new BigDecimal(3);
+    private BigDecimal four = new BigDecimal(4);
+    private BigDecimal five = new BigDecimal(5);
+    private BigDecimal six = new BigDecimal(6);
+    private BigDecimal oneOne = new BigDecimal(11);
+    private BigDecimal eight = new BigDecimal(8);
+    private BigDecimal oneZero = new BigDecimal(10);
+    private BigDecimal oneSix = new BigDecimal(16);
+    private BigDecimal twoOne06 = new BigDecimal("21.06");
+    private BigDecimal twoThree4 = new BigDecimal("23.4");
+    private BigDecimal threeTwo = new BigDecimal(32);
+    private BigDecimal sixFour = new BigDecimal(64);
+    private BigDecimal sevenOne = new BigDecimal(71);
+    private BigDecimal nineSeven = new BigDecimal(97);
+    private BigDecimal nineNine = new BigDecimal(99);
+    private BigDecimal sevenTwoZero = new BigDecimal(720);
+    private BigDecimal nineFourZeroNine = new BigDecimal(9409);
+    private BigDecimal nineSixZeroThree = new BigDecimal(9603);
+    private BigDecimal oneSixNineSevenSevenFiveFourZeroEightSixThreeTwoOneFourDiewiecFiveThreeEightEightNineOne = new BigDecimal("169775408632149538891");
+    private BigDecimal oneFiveFourEightTwoOneNineSixSevenSixNineThreeThreeZeroDziwecFourFiveZeroZeroOneEightSevenOne = new BigDecimal("15482196769330945001871");
+    private BigDecimal oneFiveSixFiveOneNineSevenTwoOneSevenSevenNineSixThreeZeroNineFourFiveFourZeroSevenSixTwo = new BigDecimal("15651972177963094540762");
+    private BigDecimal oneFiveSixFiveOneNineSevenTwoOneSevenSevenNineSixThreeZeroNineFourFiveFourZeroSevenSixone = new BigDecimal("15651972177963094540783").setScale(500,BigDecimal.ROUND_HALF_UP);
 
     @Test
     public void addTest(){
-        Assert.assertEquals(cztery, test.add(dwa,dwa).stripTrailingZeros());
-        Assert.assertEquals(dwaTrzy4,test.add(dwaJeden06,dwa34).stripTrailingZeros());
-        Assert.assertEquals(jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescDwa, test.add(jedenPiecCzteryOsiemDwaJedenDziewiecSzescSiedemSzescDziewiecTrzyTrzyZeroDziwecCzteryPiecZeroZeroJedenOsiemSiedemJeden, jedenSzescDziewiecSiedemSiedemPiecCzteryZeroOsiemSzescTrzyDwaJedenCzteryDiewiecPiecTrzyOsiemOsiemDziewiecJeden).stripTrailingZeros());
+        Assert.assertEquals(four, test.add(two,two).stripTrailingZeros());
+        Assert.assertEquals(twoThree4,test.add(twoOne06,two34).stripTrailingZeros());
+        Assert.assertEquals(oneFiveSixFiveOneNineSevenTwoOneSevenSevenNineSixThreeZeroNineFourFiveFourZeroSevenSixTwo, test.add(oneFiveFourEightTwoOneNineSixSevenSixNineThreeThreeZeroDziwecFourFiveZeroZeroOneEightSevenOne, oneSixNineSevenSevenFiveFourZeroEightSixThreeTwoOneFourDiewiecFiveThreeEightEightNineOne).stripTrailingZeros());
         Assert.assertEquals(zero, test.add(zero00000000000000000001,minusZero00000000000000000001).stripTrailingZeros());
-        Assert.assertEquals(minusJedenTrzyPiecSiedemPiecSzescSiedemOsiemDziewiecZeroPiecDZiewiecZeroZeroOsiemDziewiecPiecJedenJedenDziewiecZeroZeroOsiemSzesc, test.add(minusJedenDwaTrzyCzteryPiecSzescSiedemOsiemDziewiecZeroPiecCzteryZeroZeroZeroDziewiecPiecJedenJedenZeroZeroZeroJedenOsiemSzesc,minusJedenDwaTrzyZeroZeroZeroZeroZeroZeroZeroPiecZeroZeroZeroOsiemZeroZeroZeroZeroDziewiecZeroZeroZeroZero).stripTrailingZeros());
+        Assert.assertEquals(minusOneThreeFiveSevenFiveSixSevenEightNineZeroFiveDZiewiecZeroZeroEightNineFiveOneOneNineZeroZeroEightSix, test.add(minusOneTwoThreeFourFiveSixSevenEightNineZeroFiveFourZeroZeroZeroNineFiveOneOneZeroZeroZeroOneEightSix,minusOneTwoThreeZeroZeroZeroZeroZeroZeroZeroFiveZeroZeroZeroEightZeroZeroZeroZeroNineZeroZeroZeroZero).stripTrailingZeros());
     }
 
     @Test
     public void rootTest(){
-        BigDecimal X=test.pow(cztery, test.divide(BigDecimal.ONE,szescCztery));
+        BigDecimal X=test.pow(four, test.divide(BigDecimal.ONE,sixFour));
         System.out.println(X.toString());
-        System.out.println(test.pow(X, szescCztery.intValue()).toString());
-        Assert.assertEquals(osiem, test.root(szescCztery, 2).stripTrailingZeros());
-        Assert.assertEquals(cztery, test.root(szescCztery, 3).stripTrailingZeros());
-        Assert.assertEquals(minusCztery, test.root(minusSzescCztery, 3).stripTrailingZeros());
-        Assert.assertEquals(dwa, test.root(szescCztery, 6).stripTrailingZeros());
-        System.out.println(test.pow(jeden,dwa).toPlainString());
+        System.out.println(test.pow(X, sixFour.intValue()).toString());
+        Assert.assertEquals(eight, test.root(sixFour, 2).stripTrailingZeros());
+        Assert.assertEquals(four, test.root(sixFour, 3).stripTrailingZeros());
+        Assert.assertEquals(minusFour, test.root(minusSixFour, 3).stripTrailingZeros());
+        Assert.assertEquals(two, test.root(sixFour, 6).stripTrailingZeros());
+        System.out.println(test.pow(one,two).toPlainString());
     }
 
     @Test
     public void gCDTest(){
-        Assert.assertEquals(osiem, test.gCD(szescCztery, osiem).stripTrailingZeros());
-        Assert.assertEquals(cztery, test.gCD(szescCztery, minusCztery).stripTrailingZeros());
-        Assert.assertEquals(dwa, test.gCD(minusSzescCztery, dwa).stripTrailingZeros());
-        Assert.assertEquals(cztery, test.gCD(cztery, minusCztery).stripTrailingZeros());
+        Assert.assertEquals(eight, test.gCD(sixFour, eight).stripTrailingZeros());
+        Assert.assertEquals(four, test.gCD(sixFour, minusFour).stripTrailingZeros());
+        Assert.assertEquals(two, test.gCD(minusSixFour, two).stripTrailingZeros());
+        Assert.assertEquals(four, test.gCD(four, minusFour).stripTrailingZeros());
     }
 
     @Test
     public void getLowestPrimeNumberTest(){
         try{
-            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(osiem).stripTrailingZeros());
-            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(minusCztery).stripTrailingZeros());
-            Assert.assertEquals(trzy, PrimeNumber.getLowestPrimeNumber(trzy).stripTrailingZeros());
-            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(minusDwa).stripTrailingZeros());
-            Assert.assertEquals(dziewiecSiedem, PrimeNumber.getLowestPrimeNumber(dziewiecSiedem).stripTrailingZeros());
-            Assert.assertEquals(dziewiecSiedem, PrimeNumber.getLowestPrimeNumber(dziewiecCzteryZeroDziewiec).stripTrailingZeros());
-            Assert.assertEquals(trzy, PrimeNumber.getLowestPrimeNumber(dziewiecSzescZeroTrzy).stripTrailingZeros());
-            Assert.assertEquals(dwa, PrimeNumber.getLowestPrimeNumber(minusJedenTrzyPiecSiedemPiecSzescSiedemOsiemDziewiecZeroPiecDZiewiecZeroZeroOsiemDziewiecPiecJedenJedenDziewiecZeroZeroOsiemSzesc).stripTrailingZeros());
-            Assert.assertEquals(siedemJeden, PrimeNumber.getLowestPrimeNumber(jedenSzescDziewiecSiedemSiedemPiecCzteryZeroOsiemSzescTrzyDwaJedenCzteryDiewiecPiecTrzyOsiemOsiemDziewiecJeden).stripTrailingZeros());
-//            Assert.assertEquals(jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescjeden, Exponentiation.pow(dwa,jedenPiecSzescPiecJedenDziewiecSiedemDwaJedenSiedemSiedemDziewiecSzescTrzyZeroDziewiecCzteryPiecCzteryZeroSiedemSzescjeden,500, BigDecimal.ROUND_HALF_UP).stripTrailingZeros());
+            Assert.assertEquals(two, PrimeNumber.getLowestPrimeNumber(eight).stripTrailingZeros());
+            Assert.assertEquals(two, PrimeNumber.getLowestPrimeNumber(minusFour).stripTrailingZeros());
+            Assert.assertEquals(three, PrimeNumber.getLowestPrimeNumber(three).stripTrailingZeros());
+            Assert.assertEquals(two, PrimeNumber.getLowestPrimeNumber(minusTwo).stripTrailingZeros());
+            Assert.assertEquals(nineSeven, PrimeNumber.getLowestPrimeNumber(nineSeven).stripTrailingZeros());
+            Assert.assertEquals(nineSeven, PrimeNumber.getLowestPrimeNumber(nineFourZeroNine).stripTrailingZeros());
+            Assert.assertEquals(three, PrimeNumber.getLowestPrimeNumber(nineSixZeroThree).stripTrailingZeros());
+            Assert.assertEquals(two, PrimeNumber.getLowestPrimeNumber(minusOneThreeFiveSevenFiveSixSevenEightNineZeroFiveDZiewiecZeroZeroEightNineFiveOneOneNineZeroZeroEightSix).stripTrailingZeros());
+            Assert.assertEquals(sevenOne, PrimeNumber.getLowestPrimeNumber(oneSixNineSevenSevenFiveFourZeroEightSixThreeTwoOneFourDiewiecFiveThreeEightEightNineOne).stripTrailingZeros());
+//            Assert.assertEquals(oneFiveSixFiveOneNineSevenTwoOneSevenSevenNineSixThreeZeroNineFourFiveFourZeroSevenSixone, Exponentiation.pow(two,oneFiveSixFiveOneNineSevenTwoOneSevenSevenNineSixThreeZeroNineFourFiveFourZeroSevenSixone,500, BigDecimal.ROUND_HALF_UP).stripTrailingZeros());
 
         } catch (Exception e){
             e.printStackTrace();
@@ -99,14 +101,14 @@ public class CalculationsUnitTest {
     }
 
     @Test
-    public void FactorialTest(){
+    public void factorialTest(){
         try {
-            Assert.assertEquals(dwa, Factorial.factorial(dwa));
-            Assert.assertEquals(szesc, Factorial.factorial(trzy));
-            Assert.assertEquals(siedemDwaZero, Factorial.factorial(szesc));
+            Assert.assertEquals(two, Factorial.factorial(two));
+            Assert.assertEquals(six, Factorial.factorial(three));
+            Assert.assertEquals(sevenTwoZero, Factorial.factorial(six));
             Assert.assertEquals(new BigDecimal(
                     "126886932185884164103433389335161480802865516174545192198801"+
-                    "894375214704230400000000000000"), Factorial.factorial(szescCztery));
+                    "894375214704230400000000000000"), Factorial.factorial(sixFour));
             Assert.assertEquals(new BigDecimal(
                     "260121894356579510020490322708104361119152187501694578572754" +
                     "183785083563115694738224067857795813045708261992057589224725" +
@@ -137,7 +139,30 @@ public class CalculationsUnitTest {
                     "333950976000000000000000000000000000000000000000000000000000" +
                     "000000000000000000000000000000000000000000000000000000000000" +
                     "000000000000000000000000000000000000000000000000000000000000" +
-                    "0000000"),Factorial.factorial(siedemDwaZero));
+                    "0000000"),Factorial.factorial(sevenTwoZero));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void sumInvertedFactorialTest(){
+        try {
+            Assert.assertEquals(two, Factorial.sumInvertedFactorial(1));
+            Assert.assertEquals(one, Factorial.sumInvertedFactorial(0));
+            Assert.assertEquals(two5, Factorial.sumInvertedFactorial(2));
+            Assert.assertEquals(new BigDecimal("2.718281527"
+//                    "2.7182818284590452353602874713526624977572470936999595749669" +
+//                    "676277240766303535475945713821785251664274274663919320030599" +
+//                    "218174135966290435729003342952605956307273100853237805275106" +
+//                    "368648701695314186552748459082449550453392864976427741366416" +
+//                    "596463663250873609158413439709998317035382338009211681465541" +
+//                    "537493054202224617093212309491677634993111307030292569893420" +
+//                    "676439191366503848735788466107757255763079218988673537904194" +
+//                    "120433774064949070738630790492489764370698362973668621984292" +
+//                    "507677002141574065003"
+            ), Factorial.sumInvertedFactorial(9));
+            System.out.println(Constants.getE(1000));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -153,7 +178,7 @@ public class CalculationsUnitTest {
         }
 
         try{
-            PrimeNumber.getLowestPrimeNumber(jeden);
+            PrimeNumber.getLowestPrimeNumber(one);
             Assert.fail();
         } catch (Exception e){
 
@@ -181,7 +206,7 @@ public class CalculationsUnitTest {
         }
 
         try{
-            PrimeNumber.getLowestPrimeNumber(dwaJeden06);
+            PrimeNumber.getLowestPrimeNumber(twoOne06);
             Assert.fail();
         } catch (Exception e){
 

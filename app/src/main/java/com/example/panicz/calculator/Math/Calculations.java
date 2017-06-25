@@ -1,8 +1,4 @@
-package com.example.panicz.calculator.Controllers;
-
-import com.example.panicz.calculator.Math.Exponentiation;
-import com.example.panicz.calculator.Math.GreatestCommonDivisor;
-import com.example.panicz.calculator.Math.Roots;
+package com.example.panicz.calculator.Math;
 
 import java.math.BigDecimal;
 

@@ -1,9 +1,4 @@
-package com.example.panicz.calculator.Controllers;
-
-import com.example.panicz.calculator.Math.Addition;
-import com.example.panicz.calculator.Math.Division;
-import com.example.panicz.calculator.Math.Multiplication;
-import com.example.panicz.calculator.Math.Subtraction;
+package com.example.panicz.calculator.Math;
 
 import java.math.BigDecimal;
 

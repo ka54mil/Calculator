@@ -16,7 +16,7 @@ public final class Logarithm {
         return log(number, BigDecimal.TEN);
     }
 
-//    public BigDecimal ln(BigDecimal number){
-//        return log(number, e);
-//    }
+    public BigDecimal ln(BigDecimal number){
+        return log(number, Constants.getE());
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.panicz.calculator.Controllers;
 
 import com.example.panicz.calculator.Exceptions.IncorrectEquationFormatException;
+import com.example.panicz.calculator.Math.Calculations;
 
 import java.math.BigDecimal;
 import java.util.Deque;
