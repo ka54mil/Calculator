@@ -34,35 +34,31 @@ public final class Factorial {
         }
     }
 
-    public static BigDecimal sumInvertedFactorial(int n)
-            throws NotAWholeNumberException, NegativeNumberException
+    public static BigDecimal sumInvertedFactorial(int scale)
+            throws NegativeNumberException
     {
-        try{
-            return sumInvertedFactorial(n, BigDecimal.ROUND_HALF_UP);
-        } catch (ArithmeticException aE){
-            throw new NotAWholeNumberException("The given number must be a whole number");
-        }
+        return sumInvertedFactorial(scale, BigDecimal.ROUND_HALF_UP);
     }
 
     public static BigDecimal sumInvertedFactorial(int scale, int roundingMode)
-            throws NotAWholeNumberException, NegativeNumberException
+            throws NegativeNumberException
     {
-        try{
-            if(scale==0){
-                return BigDecimal.ONE;
-            }
-            return calculateSumInvertedFactorial( scale, roundingMode);
-        } catch (ArithmeticException aE){
-            throw new NotAWholeNumberException("The given number must be a whole number");
+        if(scale==0){
+            return BigDecimal.ONE;
         }
+        return calculateSumInvertedFactorial( scale, roundingMode);
     }
 
     private static BigDecimal calculateSumInvertedFactorial(int scale, int roundingMode)
             throws NegativeNumberException
     {
+        if(scale<0){
+            throw new NegativeNumberException("Number can't be negative");
+        }
         BigDecimal result = BigDecimal.ONE;
         BigDecimal factorial = BigDecimal.ONE;
         for(int i = 1;i<=scale;i++){
+            System.out.println("cos");
             factorial = Multiplication.multiply(factorial, new BigDecimal(i), scale, roundingMode);
             result = Addition.add(result, Division.divide(BigDecimal.ONE, factorial, scale, roundingMode));
         }

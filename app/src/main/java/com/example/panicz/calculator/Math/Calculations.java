@@ -5,6 +5,11 @@ import java.math.BigDecimal;
 public class Calculations extends SimpleCalculations {
     public Calculations(){
         super();
+        try {
+            Constants.getE();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public Calculations(int roundingMode, int scale){

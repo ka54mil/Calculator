@@ -7,7 +7,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.panicz.calculator.Controllers.CalculatorViewCreator;
+import com.example.panicz.calculator.Math.Constants;
 import com.example.panicz.calculator.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        saveConstantsOnDevice();
         CalculatorViewCreator buttons = new CalculatorViewCreator(this);
     }
 
@@ -40,5 +48,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveConstantsOnDevice(){
+
+        try {
+            InputStream is = getAssets().open(Constants.getFileName());
+            Constants.setFileName(getFilesDir()+Constants.getFileName());
+            File constants = new File(Constants.getFileName());
+            if(!constants.exists()){
+                constants.createNewFile();
+            }
+
+            OutputStream os = new FileOutputStream(constants);
+            byte [] buffer = new byte [1024];
+            int length =0;
+            while((length = is.read(buffer))!=-1){
+                os.write(buffer,0,length);
+            }
+
+            is.close();
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

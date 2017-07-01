@@ -53,7 +53,6 @@ public class CalculatorViewCreator {
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
         params.columnSpec = GridLayout.spec(0,5);
         textField.setLayoutParams(params);
-        textField.setText("0");
         textField.setGravity(Gravity.CLIP_HORIZONTAL|Gravity.TOP|Gravity.BOTTOM);
         textField.setId(R.id.equationTextField);
         gridButtons.setPadding(5,0,5,0);
